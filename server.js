@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+const Log = require('./models/logs')
 const app = express()
 
 
@@ -35,7 +36,7 @@ app.post('/logs', (req, res) => {
         req.body.shipIsBroken = false
     }
 
-    Logs.create(req.body, (err, createdLogs) => {
+    Log.create(req.body, (err, createdLogs) => {
         if(err){
             res.status(403).send(err)
         } else {
