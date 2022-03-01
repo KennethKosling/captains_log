@@ -16,8 +16,27 @@ mongoose.connect(process.env.MONGO_URI, {
 })
 
 
-//INDEX
+//Middleware
+app.use(express.urlencoded({ extended: true }))
 
+app.use((req, res, next) => {
+    console.log(req.body)
+    next()
+})
+
+
+//INDEX
+app.get('/logs', (req, res) => {
+    Log.find({}, (err, foundLogs) => {
+        if(err){
+            res.status(400).send(err)
+        } else {
+            res.render('Index', {
+                logs: foundLogs
+            })
+        }
+    })
+});
 
 
 //NEW
@@ -60,4 +79,6 @@ app.post('/logs', (req, res) => {
 
 
 
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('Wynncraft is Great')
+});

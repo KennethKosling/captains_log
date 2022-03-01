@@ -9,9 +9,9 @@ class New extends React.Component {
             <form action="/logs" method="POST">
                 Title:<br /><input name="name" type='text' /><br/>
                 Date:<br /><input name="date" type="date" /><br/>
-                Entry:<br />
-                <textarea name="entry" rows="5" cols="40" /><br/>
                 In need of repairs: <input name="shipIsBroken" type="checkbox" /><br/>
+                Entry:<br />
+                <textarea name="entry" rows="5" cols="40"></textarea><br/>
                 <input type="submit" value="Submit Entry" />
             </form>
             <nav>
