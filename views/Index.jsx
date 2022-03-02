@@ -10,12 +10,10 @@ class Index extends React.Component{
                     caplogs.map((log) => {
                         return (
                             <li key={`${log._id}`}>
-                                <a href={`/logs/${log._id}`}>{log.name}</a>
-                                <form action={`/logs/${log._id}/edit`}method='GET'>
-                                    <input type='submit' value={`Edit ${log.name}`} />
-                                </form>
+                                <a href={`/logs/${log._id}`}>{log.name}</a><br />
+                                <a href={`/logs/${log._id}/edit`}>Edit</a>
                                 <form action={`/logs/${log._id}?_method=DELETE`} method='POST'>
-                                    <input type='submit' value={`Delete ${log.name}`} />
+                                    <input type='submit' value={`Delete`} />
                                 </form>
                             </li>
                         )

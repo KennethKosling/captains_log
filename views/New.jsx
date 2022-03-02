@@ -8,8 +8,7 @@ class New extends React.Component {
             {/* NOTE: action will be the route, method will be the HTTP verb */}
             <form action="/logs" method="POST">
                 Title:<br /><input name="name" type='text' /><br/>
-                Date:<br /><input name="date" type="date" /><br/>
-                In need of repairs: <input name="shipIsBroken" type="checkbox" /><br/>
+                In need of repairs?: <input name="shipIsBroken" type="checkbox" defaultChecked /><br/>
                 Entry:<br />
                 <textarea name="entry" rows="5" cols="40"></textarea><br/>
                 <input type="submit" value="Submit Entry" />

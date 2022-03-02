@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 
 const logSchema = new mongoose.Schema({
     name: String,
-    date: String,
     shipIsBroken: Boolean,
     entry: String
-})
+}, {timestamps: true})
 
 const Log = mongoose.model('Log', logSchema);
 

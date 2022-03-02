@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const Log = require('./models/logs')
 const app = express()
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use(methodOverride('_method'))
 
 //INDEX
 app.get('/logs', (req, res) => {
@@ -46,7 +48,15 @@ app.get('/logs/new', (req, res) => {
 
 
 //DELETE
-
+app.delete('/logs/:id', (req, res) => {
+    Log.findByIdAndDelete(req.params.id, (err, deletedLog) => {
+        if(err){
+            res.status(400).send(err)
+        } else {
+            res.redirect('/logs')
+        }
+    })
+});
 
 
 //UPDATE
@@ -76,8 +86,17 @@ app.post('/logs', (req, res) => {
 
 
 //SHOW
-
-
+app.get('/logs/:id', (req, res) => {
+    Log.findById(req.params.id, (err, foundLog) => {
+        if(err){
+            res.status(400).send(err)
+        } else {
+            res.render('Show', {
+                logs: foundLog
+            })
+        }
+    })
+});
 
 app.listen(3000, () => {
     console.log('Wynncraft is Great')
