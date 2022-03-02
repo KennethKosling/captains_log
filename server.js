@@ -60,7 +60,21 @@ app.delete('/logs/:id', (req, res) => {
 
 
 //UPDATE
+app.put('/logs/:id', (req, res) => {
+    if(req.body.readyToEat === 'on'){
+        req.body.readyToEat = true;
+    } else {
+        req.body.readyToEat = false;
+    }
 
+    Log.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedLog) => {
+        if(err){
+            res.status(400).send(err)
+        } else {
+            res.redirect(`/logs/${req.params.id}`)
+        }
+    })
+})
 
 
 //CREATE
