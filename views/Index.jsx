@@ -5,6 +5,7 @@ class Index extends React.Component{
         const caplogs = this.props.logs
         return(
             <div>
+                <h1>Welcome, Captain.</h1>
                 <ul>
                 {
                     caplogs.map((log) => {
